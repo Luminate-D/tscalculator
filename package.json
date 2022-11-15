@@ -1,5 +1,5 @@
 {
-  "name": "tscalculator",
+  "name": "@luminate_d/tscalculator",
   "version": "1.0.0",
   "description": "",
   "main": "build/module.js",

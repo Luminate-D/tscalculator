@@ -6,12 +6,12 @@ functions, constants and radix numbers easily, and 100% safe
 
 ## Installation
 ```sh
-$ npm install @luminate-d/tscalculator
+$ npm install @luminate_d/tscalculator
 ```
 
 ## Usage
 ```ts
-import { Lexer, Parser, ParseError } from '@luminate-d/tscalculator';
+import { Lexer, Parser, ParseError } from '@luminate_d/tscalculator';
 
 const input = 'cos(pi) * 0xff + 2^8'; // Your expression
 
