@@ -1,6 +1,6 @@
 {
   "name": "@luminate_d/tscalculator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "build/module.js",
   "types": "typings.d.ts",

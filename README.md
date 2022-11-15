@@ -67,6 +67,9 @@ try {
 - cbrt
 - ln
 - log - can be called like `log(100, 10)` - log 100 by base 10, defaults base to `E`
+- tetrate
+- rad - degrees to radians
+- deg - radians to degrees
 - log2
 - log10
 - log1p

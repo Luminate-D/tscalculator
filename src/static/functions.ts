@@ -56,6 +56,9 @@ export class Functions {
         [ 'trunc', (num: number) => Math.trunc(num) ],
         [ 'tetrate', (num: number, pow: number) => MathUtil.tetrate(num, pow) ],
 
+        [ 'rad', (num: number) => num * Math.PI / 180 ],
+        [ 'deg', (num: number) => num * 180 / Math.PI ],
+
         [ 'random', () => Math.random() ]
     ]);
 
