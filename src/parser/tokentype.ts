@@ -6,6 +6,8 @@ export enum TokenType {
     STAR, SLASH,
     POWER,
 
+    EXCL, PERCENT,
+
     LPAREN, RPAREN,
     COMMA,
 

@@ -11,9 +11,11 @@ var TokenType;
     TokenType[TokenType["STAR"] = 5] = "STAR";
     TokenType[TokenType["SLASH"] = 6] = "SLASH";
     TokenType[TokenType["POWER"] = 7] = "POWER";
-    TokenType[TokenType["LPAREN"] = 8] = "LPAREN";
-    TokenType[TokenType["RPAREN"] = 9] = "RPAREN";
-    TokenType[TokenType["COMMA"] = 10] = "COMMA";
-    TokenType[TokenType["EOF"] = 11] = "EOF";
+    TokenType[TokenType["EXCL"] = 8] = "EXCL";
+    TokenType[TokenType["PERCENT"] = 9] = "PERCENT";
+    TokenType[TokenType["LPAREN"] = 10] = "LPAREN";
+    TokenType[TokenType["RPAREN"] = 11] = "RPAREN";
+    TokenType[TokenType["COMMA"] = 12] = "COMMA";
+    TokenType[TokenType["EOF"] = 13] = "EOF";
 })(TokenType = exports.TokenType || (exports.TokenType = {}));
 //# sourceMappingURL=tokentype.js.map

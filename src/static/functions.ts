@@ -1,3 +1,5 @@
+import { MathUtil } from '../util/math';
+
 export class Functions {
     private static functions: Map<String, Function> = new Map<String, Function>([
         [ 'sin', (num: number) => Math.sin(num) ],
@@ -44,12 +46,14 @@ export class Functions {
         [ 'crt', (num: number) => Math.cbrt(num) ],
         [ 'cbrt', (num: number) => Math.cbrt(num) ],
 
-        [ 'log', (num: number) => Math.log(num) ],
+        [ 'ln', (num: number) => Math.log(num) ],
         [ 'log2', (num: number) => Math.log2(num) ],
         [ 'log10', (num: number) => Math.log10(num) ],
         [ 'log1p', (num: number) => Math.log1p(num) ],
+        [ 'log', (num: number, base: number = Math.E) => Math.log(num) / Math.log(base) ],
 
         [ 'trunc', (num: number) => Math.trunc(num) ],
+        [ 'tetrate', (num: number, pow: number) => MathUtil.tetrate(num, pow) ],
 
         [ 'random', () => Math.random() ]
     ]);

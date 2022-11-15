@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Functions = void 0;
+const math_1 = require("../util/math");
 class Functions {
     static functions = new Map([
         ['sin', (num) => Math.sin(num)],
@@ -37,11 +38,13 @@ class Functions {
         ['sqrt', (num) => Math.sqrt(num)],
         ['crt', (num) => Math.cbrt(num)],
         ['cbrt', (num) => Math.cbrt(num)],
-        ['log', (num) => Math.log(num)],
+        ['ln', (num) => Math.log(num)],
         ['log2', (num) => Math.log2(num)],
         ['log10', (num) => Math.log10(num)],
         ['log1p', (num) => Math.log1p(num)],
+        ['log', (num, base = Math.E) => Math.log(num) / Math.log(base)],
         ['trunc', (num) => Math.trunc(num)],
+        ['tetrate', (num, pow) => math_1.MathUtil.tetrate(num, pow)],
         ['random', () => Math.random()]
     ]);
     static getExisting() {

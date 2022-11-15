@@ -3,7 +3,7 @@ import { Expression } from '../expression';
 export enum OperationType {
     Add, Subtract,
     Multiply, Divide,
-    Power
+    Power, Mod
 }
 
 export class BinaryExpression implements Expression {
@@ -24,6 +24,7 @@ export class BinaryExpression implements Expression {
             case OperationType.Multiply: return this.expression1.eval() * this.expression2.eval();
             case OperationType.Divide:   return this.expression1.eval() / this.expression2.eval();
             case OperationType.Power:    return this.expression1.eval() ** this.expression2.eval();
+            case OperationType.Mod:      return this.expression1.eval() % this.expression2.eval();
         }
     }
 }

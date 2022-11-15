@@ -68,6 +68,11 @@ export class Parser {
                 continue;
             }
 
+            if(this.match(TokenType.PERCENT)) {
+                result = new BinaryExpression(OperationType.Mod, result, this.unary());
+                continue;
+            }
+
             break;
         }
 
@@ -77,6 +82,7 @@ export class Parser {
     private unary(): Expression {
         if(this.match(TokenType.PLUS)) return new UnaryExpression(UnaryOperationType.Positive, this.powery());
         if(this.match(TokenType.MINUS)) return new UnaryExpression(UnaryOperationType.Negative, this.powery());
+        if(this.match(TokenType.EXCL)) return new UnaryExpression(UnaryOperationType.SUBFACTOR, this.powery());
 
         return this.powery();
     }
@@ -98,9 +104,25 @@ export class Parser {
 
     private primary(): Expression {
         const current = this.get(0);
-        if(this.match(TokenType.NUMBER)) return new NumberExpression(current.getText(), RadixType.Dec);
+
         if(this.match(TokenType.RADIX_NUMBER)) return new NumberExpression(current.getText().slice(1), Parser.RADIX_KW.get(current.getText()[0]));
-        if(this.get(0).getType() == TokenType.WORD && this.get(1).getType() == TokenType.LPAREN) return this.function();
+        if(this.match(TokenType.NUMBER)) {
+            const number = new NumberExpression(current.getText(), RadixType.Dec);
+            if(this.lookMatch(0, TokenType.EXCL) && this.lookMatch(1, TokenType.EXCL)) {
+                this.consume(TokenType.EXCL);
+                this.consume(TokenType.EXCL);
+                return new UnaryExpression(UnaryOperationType.DFACTOR, number);
+            }
+
+            if(this.lookMatch(0, TokenType.EXCL)) {
+                this.consume(TokenType.EXCL);
+                return new UnaryExpression(UnaryOperationType.FACTOR, number);
+            }
+
+            return number;
+        }
+
+        if(this.lookMatch(0, TokenType.WORD) && this.lookMatch(1, TokenType.WORD)) return this.function();
         if(this.match(TokenType.WORD)) return new ConstantExpression(current.getText());
 
         if(this.match(TokenType.LPAREN)) {

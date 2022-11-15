@@ -13,7 +13,7 @@ class Lexer {
     pos;
     length;
     constructor(input) {
-        this.OPERATOR_CHARS = "+-*/^()";
+        this.OPERATOR_CHARS = "+-*/^()!%";
         this.OPERATORS = new Map();
         this.OPERATORS.set('+', tokentype_1.TokenType.PLUS);
         this.OPERATORS.set('-', tokentype_1.TokenType.MINUS);
@@ -22,6 +22,8 @@ class Lexer {
         this.OPERATORS.set('^', tokentype_1.TokenType.POWER);
         this.OPERATORS.set('(', tokentype_1.TokenType.LPAREN);
         this.OPERATORS.set(')', tokentype_1.TokenType.RPAREN);
+        this.OPERATORS.set('!', tokentype_1.TokenType.EXCL);
+        this.OPERATORS.set('%', tokentype_1.TokenType.PERCENT);
         this.input = input;
         this.tokens = [];
         this.pos = 0;

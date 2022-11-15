@@ -64,7 +64,8 @@ try {
 - sqrt
 - crt
 - cbrt
-- log
+- ln
+- log - can be called like `log(100, 10)` - log 100 by base 10, defaults base to `E`
 - log2
 - log10
 - log1p
@@ -78,7 +79,11 @@ try {
 - Multiply: `x * y`
 - Divide: `x / y`
 - Power: `x ^ y`
+- Mod: `x % y`
 - Function: `sin(x)`
+- Factor: `x!`
+- Double Factor: `x!!`
+- Subfactor: `!x`
 - Radix Numbers:
   - `0b10` - Binary (`0b`) representation of `2`
   - `0o15` - Octal (`0o`) representation of `13`

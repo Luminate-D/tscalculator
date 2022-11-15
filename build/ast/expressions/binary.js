@@ -8,6 +8,7 @@ var OperationType;
     OperationType[OperationType["Multiply"] = 2] = "Multiply";
     OperationType[OperationType["Divide"] = 3] = "Divide";
     OperationType[OperationType["Power"] = 4] = "Power";
+    OperationType[OperationType["Mod"] = 5] = "Mod";
 })(OperationType = exports.OperationType || (exports.OperationType = {}));
 class BinaryExpression {
     expression1;
@@ -25,6 +26,7 @@ class BinaryExpression {
             case OperationType.Multiply: return this.expression1.eval() * this.expression2.eval();
             case OperationType.Divide: return this.expression1.eval() / this.expression2.eval();
             case OperationType.Power: return this.expression1.eval() ** this.expression2.eval();
+            case OperationType.Mod: return this.expression1.eval() % this.expression2.eval();
         }
     }
 }

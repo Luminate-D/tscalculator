@@ -56,6 +56,10 @@ class Parser {
                 result = new binary_1.BinaryExpression(binary_1.OperationType.Divide, result, this.unary());
                 continue;
             }
+            if (this.match(tokentype_1.TokenType.PERCENT)) {
+                result = new binary_1.BinaryExpression(binary_1.OperationType.Mod, result, this.unary());
+                continue;
+            }
             break;
         }
         return result;
@@ -65,6 +69,8 @@ class Parser {
             return new unary_1.UnaryExpression(unary_1.UnaryOperationType.Positive, this.powery());
         if (this.match(tokentype_1.TokenType.MINUS))
             return new unary_1.UnaryExpression(unary_1.UnaryOperationType.Negative, this.powery());
+        if (this.match(tokentype_1.TokenType.EXCL))
+            return new unary_1.UnaryExpression(unary_1.UnaryOperationType.SUBFACTOR, this.powery());
         return this.powery();
     }
     powery() {
@@ -80,11 +86,22 @@ class Parser {
     }
     primary() {
         const current = this.get(0);
-        if (this.match(tokentype_1.TokenType.NUMBER))
-            return new number_1.NumberExpression(current.getText(), number_1.RadixType.Dec);
         if (this.match(tokentype_1.TokenType.RADIX_NUMBER))
             return new number_1.NumberExpression(current.getText().slice(1), Parser.RADIX_KW.get(current.getText()[0]));
-        if (this.get(0).getType() == tokentype_1.TokenType.WORD && this.get(1).getType() == tokentype_1.TokenType.LPAREN)
+        if (this.match(tokentype_1.TokenType.NUMBER)) {
+            const number = new number_1.NumberExpression(current.getText(), number_1.RadixType.Dec);
+            if (this.lookMatch(0, tokentype_1.TokenType.EXCL) && this.lookMatch(1, tokentype_1.TokenType.EXCL)) {
+                this.consume(tokentype_1.TokenType.EXCL);
+                this.consume(tokentype_1.TokenType.EXCL);
+                return new unary_1.UnaryExpression(unary_1.UnaryOperationType.DFACTOR, number);
+            }
+            if (this.lookMatch(0, tokentype_1.TokenType.EXCL)) {
+                this.consume(tokentype_1.TokenType.EXCL);
+                return new unary_1.UnaryExpression(unary_1.UnaryOperationType.FACTOR, number);
+            }
+            return number;
+        }
+        if (this.lookMatch(0, tokentype_1.TokenType.WORD) && this.lookMatch(1, tokentype_1.TokenType.WORD))
             return this.function();
         if (this.match(tokentype_1.TokenType.WORD))
             return new constant_1.ConstantExpression(current.getText());

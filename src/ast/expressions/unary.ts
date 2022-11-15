@@ -1,7 +1,9 @@
 import { Expression } from '../expression';
+import { MathUtil } from '../../util/math';
 
 export enum UnaryOperationType {
-    Positive, Negative
+    Positive, Negative,
+    SUBFACTOR, DFACTOR, FACTOR
 }
 
 export class UnaryExpression implements Expression {
@@ -17,6 +19,9 @@ export class UnaryExpression implements Expression {
         switch(this.operation) {
             case UnaryOperationType.Positive: return this.expression.eval();
             case UnaryOperationType.Negative: return -this.expression.eval();
+            case UnaryOperationType.SUBFACTOR: return MathUtil.subfactorial(this.expression.eval());
+            case UnaryOperationType.DFACTOR: return MathUtil.dfactorial(this.expression.eval());
+            case UnaryOperationType.FACTOR: return MathUtil.factorial(this.expression.eval());
         }
     }
 }

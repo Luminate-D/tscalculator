@@ -7,7 +7,7 @@ import { Constants } from './static/constants';
     console.log('[+] Total functions:', Functions.getExisting().length);
     console.log('[+] Total constants:', Constants.getExisting().length);
 
-    const data = '(cos(pi) * 0xff / e) ^ pi';
+    const data = '10!! % 28';
     console.log('[!] Running expression: "' + data + '"');
 
     const tokens = new Lexer(data).tokenize();
