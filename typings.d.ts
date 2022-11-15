@@ -25,4 +25,12 @@ export class UnknownFunctionError extends Error {
     public readonly name: string;
 }
 
+export class Functions {
+    public static register(name: string, callback: (...args: number[]) => number);
+}
+
+export class Constants {
+    public static register(name: string, value: number);
+}
+
 export type CalculatorError = UnknownConstantError | UnknownFunctionError | ParseError;

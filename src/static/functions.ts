@@ -53,6 +53,8 @@ export class Functions {
         [ 'log1p', (num: number) => Math.log1p(num) ],
         [ 'log', (num: number, base: number = Math.E) => Math.log(num) / Math.log(base) ],
 
+        [ 'digits', (num: number) => Math.trunc(Math.log10(num) + 1) ],
+
         [ 'trunc', (num: number) => Math.trunc(num) ],
         [ 'tetrate', (num: number, pow: number) => MathUtil.tetrate(num, pow) ],
 
@@ -61,6 +63,10 @@ export class Functions {
 
         [ 'random', () => Math.random() ]
     ]);
+
+    public static register(name: string, value: (...args: number[]) => number) {
+        Functions.functions.set(name, value);
+    }
 
     public static getExisting(): string[] {
         return Array.from(Functions.functions.keys()).map(x => x.toString());

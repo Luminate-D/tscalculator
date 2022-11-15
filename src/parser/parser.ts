@@ -122,7 +122,7 @@ export class Parser {
             return number;
         }
 
-        if(this.lookMatch(0, TokenType.WORD) && this.lookMatch(1, TokenType.WORD)) return this.function();
+        if(this.lookMatch(0, TokenType.WORD) && this.lookMatch(1, TokenType.LPAREN)) return this.function();
         if(this.match(TokenType.WORD)) return new ConstantExpression(current.getText());
 
         if(this.match(TokenType.LPAREN)) {

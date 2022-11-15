@@ -14,6 +14,10 @@ export class Constants {
         [ 'p', Math.cbrt(1 / 2 + (1 / 6) * Math.sqrt(23 / 3)) + Math.cbrt(1 / 2 - (1 / 6) * Math.sqrt(23 / 3))],
     ]);
 
+    public static register(name: string, value: number) {
+        Constants.constants.set(name, value);
+    }
+
     public static getExisting(): string[] {
         return Array.from(Constants.constants.keys()).map(x => x.toString());
     }

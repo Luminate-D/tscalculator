@@ -8,7 +8,7 @@ import { Constants } from './static/constants';
     console.log('[+] Total functions:', Functions.getExisting().length);
     console.log('[+] Total constants:', Constants.getExisting().length);
 
-    const data = '!10';
+    const data = 'sin(0/0)';
     console.log('[!] Running expression: "' + data + '"');
 
     const tokens = new Lexer(data).tokenize();

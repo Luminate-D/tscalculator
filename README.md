@@ -30,6 +30,14 @@ try {
 }
 ```
 
+### Adding custom constants/functions
+```ts
+import { Constants, Functions } from '@luminate_d/tscalculator';
+
+Constants.register('name', 1000);
+Functions.register('name', (num: number) => (0xff % num) ^ 8);
+```
+
 ## Errors
 - UnknownConstantError / UnknownFunctionError occurs when unknown name provided
 - ParseError occurs when invalid expression provided and it cannot be parsed
@@ -73,6 +81,7 @@ try {
 - log2
 - log10
 - log1p
+- digits - calculate how many digits are present in number `digits(18293) = 5`
 - trunc
 - random
 
