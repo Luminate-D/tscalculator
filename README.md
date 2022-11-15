@@ -10,27 +10,28 @@ $ npm install @luminate_d/tscalculator
 ```
 
 ## Usage
+
 ```ts
-import { Lexer, Parser, ParseError } from '@luminate_d/tscalculator';
+import { Lexer, Parser, CalculatorError } from '@luminate_d/tscalculator';
 
 const input = 'cos(pi) * 0xff + 2^8'; // Your expression
 
 try {
-    const expression = new Parser(
-        new Lexer(input).tokenize()
-    ).parse();
-    
-    const result = expression.eval(); // 1
-    console.log('Result:', result);
-} catch (error: RuntimeError | ParseError) {
-    if(error instanceof RuntimeError) {
-        console.log('Failed to eval:', error.message);
-    } else console.log('Error at character index', error.index);
+  const expression = new Parser(
+          new Lexer(input).tokenize()
+  ).parse();
+
+  const result = expression.eval(); // 1
+  console.log('Result:', result);
+} catch(error: CalculatorError) {
+  if(error instanceof RuntimeError) {
+    console.log('Failed to eval:', error.message);
+  } else console.log('Error at character index', error.index);
 }
 ```
 
 ## Errors
-- RuntimeError occurs when unknown constant/function name provided
+- UnknownConstantError / UnknownFunctionError occurs when unknown name provided
 - ParseError occurs when invalid expression provided and it cannot be parsed
   - Has `.index` property that shows index of character where error occurred
 
@@ -88,12 +89,3 @@ try {
   - `0b10` - Binary (`0b`) representation of `2`
   - `0o15` - Octal (`0o`) representation of `13`
   - `0xff` - Binary (`0x`) representation of `255`
-
-## TODO List
-- [x] Number Support
-- [x] Add, Subtract, Divide, Multiply, Power support
-- [x] Lots of functions support
-- [x] Lots of constants support
-- [ ] Custom functions/constants
-- [ ] UnknownConstantError / UnknownFunctionError
-- [ ] Simplify usage code

@@ -12,7 +12,17 @@ export class Parser {
     public parse(): Expression;
 }
 
-export class ParseError {
+export class ParseError extends Error {
     public readonly position: number;
     public readonly tokenType: TokenType;
 }
+
+export class UnknownConstantError extends Error {
+    public readonly name: string;
+}
+
+export class UnknownFunctionError extends Error {
+    public readonly name: string;
+}
+
+export type CalculatorError = UnknownConstantError | UnknownFunctionError | ParseError;
