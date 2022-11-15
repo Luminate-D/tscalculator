@@ -50,10 +50,13 @@ export class Lexer {
         let buffer = '';
         let current = this.peek(0);
         while(true) {
-            if(Parser.RADIX_KW.has(current)) return this.tokenizeRadixNumber();
-            if(current == '.') {
-                if(buffer.includes('.')) throw new SyntaxError(`Unexpected character '.' while parsing '${buffer}.'`);
-            } else if(!Character.isDigit(current)) break;
+            const isDigit = Character.isDigit(current);
+            const isRadix = Parser.RADIX_KW.has(current);
+            const isExp = current == 'e';
+            const isFloat = current == '.';
+
+            if(isRadix) return this.tokenizeRadixNumber();
+            if(!isDigit && !isExp && !isFloat) break;
 
             buffer += current;
             current = this.next();
@@ -62,17 +65,19 @@ export class Lexer {
         this.addToken(TokenType.NUMBER, buffer);
     }
 
-    private tokenizeRadixNumber() {
-        let buffer = '';
+    private tokenizeRadixNumber(): void {
         let current = this.peek(0);
-        while(true) {
-            if(Parser.RADIX_KW.has(current)) {
-                buffer += current;
-                current = this.next();
-                continue;
-            }
+        let buffer = current;
 
-            if(!Character.isHexDigit(current)) break;
+        const radix = current;
+        current = this.next();
+
+        while(true) {
+            const isDigit = Character.isRadixDigit(current, radix);
+            const isRadix = Parser.RADIX_KW.has(current);
+
+            if(!isDigit && !isRadix) break;
+
             buffer += current;
             current = this.next();
         }

@@ -100,4 +100,4 @@ Functions.register('name', (num: number) => (0xff % num) ^ 8);
 - Radix Numbers:
   - `0b10` - Binary (`0b`) representation of `2`
   - `0o15` - Octal (`0o`) representation of `13`
-  - `0xff` - Binary (`0x`) representation of `255`
+  - `0xff` - Hex (`0x`) representation of `255`

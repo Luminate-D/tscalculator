@@ -27,4 +27,19 @@ export class MathUtil {
 
         return sum * result;
     }
+
+    public static geron(a: number, b: number, c: number): number {
+        const p = (a + b + c) / 2;
+        return Math.sqrt(p * (p - a) * (p - b) * (p - c));
+    }
+
+    public static tcos(a: number, b: number, angle: number): number {
+        const hypot = Math.hypot(a, b);
+        return Math.sqrt(hypot - 2 * a * b * Math.cos(angle));
+    }
+
+    public static fib(num: number): number {
+        if (num <= 1) return 1;
+        return MathUtil.fib(num - 1) + MathUtil.fib(num - 2);
+    }
 }

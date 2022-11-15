@@ -61,7 +61,15 @@ export class Functions {
         [ 'rad', (num: number) => num * Math.PI / 180 ],
         [ 'deg', (num: number) => num * 180 / Math.PI ],
 
-        [ 'random', () => Math.random() ]
+        [ 'random', () => Math.random() ],
+
+        [ 'fib', (num: number) => MathUtil.fib(num) ],
+
+        // Geometry
+        [ 'geron', MathUtil.geron ],
+        [ 'hypot', (a: number, b: number) => Math.hypot(a, b) ],
+        [ 'dist', (x1: number, y1: number, x2: number, y2: number) => Math.hypot(x2 - x1, y2 - y1) ],
+        [ 'tcos', (a: number, b: number, angle: number) => MathUtil.tcos(a, b, angle) ],
     ]);
 
     public static register(name: string, value: (...args: number[]) => number) {

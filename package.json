@@ -1,12 +1,10 @@
 {
   "name": "@luminate_d/tscalculator",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "",
   "main": "build/module.js",
   "types": "typings.d.ts",
-  "scripts": {
-    "test": "node build/app.js"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "Luminate-D",
   "license": "MIT",
