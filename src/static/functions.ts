@@ -1,4 +1,5 @@
 import { MathUtil } from '../util/math';
+import { UnknownFunctionError } from '../errors/unknownfunction';
 
 export class Functions {
     private static functions: Map<String, Function> = new Map<String, Function>([
@@ -63,11 +64,12 @@ export class Functions {
     }
 
     public static isExists(key: string): boolean {
-        return Functions.functions.has(key);
+        return Functions.functions.has(key.toLowerCase());
     }
 
     public static get(key: string): Function {
-        if(!this.isExists(key)) throw new ReferenceError(`Function "${key}" is not defined`);
+        key = key.toLowerCase();
+        if(!this.isExists(key)) throw new UnknownFunctionError(key);
         return Functions.functions.get(key) as Function;
     }
 }

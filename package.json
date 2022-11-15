@@ -9,5 +9,8 @@
   },
   "keywords": [],
   "author": "Luminate-D",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "source-map-support": "^0.5.21"
+  }
 }

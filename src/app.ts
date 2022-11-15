@@ -1,3 +1,4 @@
+import 'source-map-support/register';
 import { Lexer } from './parser/lexer';
 import { Parser } from './parser/parser';
 import { Functions } from './static/functions';
@@ -7,7 +8,7 @@ import { Constants } from './static/constants';
     console.log('[+] Total functions:', Functions.getExisting().length);
     console.log('[+] Total constants:', Constants.getExisting().length);
 
-    const data = '10!! % 28';
+    const data = '!10';
     console.log('[!] Running expression: "' + data + '"');
 
     const tokens = new Lexer(data).tokenize();
