@@ -1,0 +1,13 @@
+{
+  "name": "tscalculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/module.js",
+  "types": "typings.d.ts",
+  "scripts": {
+    "test": "node build/app.js"
+  },
+  "keywords": [],
+  "author": "Luminate-D",
+  "license": "MIT"
+}
