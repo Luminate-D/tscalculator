@@ -1,1 +1,0 @@
-{"version":3,"file":"constant.js","sourceRoot":"","sources":["../../../src/ast/expressions/constant.ts"],"names":[],"mappings":";;;AACA,sDAAmD;AAEnD,MAAa,kBAAkB;IACV,IAAI,CAAS;IAE9B,YAAmB,IAAY;QAC3B,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;IACrB,CAAC;IAEM,IAAI;QACP,OAAO,qBAAS,CAAC,GAAG,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;IACpC,CAAC;CACJ;AAVD,gDAUC"}
